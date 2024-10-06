@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Complaint_Portal.Pages.ComplainerDashboard"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout>
+
+            <Frame
+                Margin="10,20,10,10"
+                BackgroundColor="Red"
+                HeightRequest="200"
+                HasShadow="True"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center">
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image
+                        HeightRequest="30"
+                        Source="plus.png"
+                        WidthRequest="30" />
+                    <Label
+                        Margin="0,20,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        FontFamily="Harmony"
+                        HorizontalOptions="Center"
+                        Text="Submit new Complaint"
+                        TextColor="white"
+                        VerticalOptions="Center" />
+                </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Submit_Complaint" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame
+                Margin="10,10,10,0"
+                BackgroundColor="#38b6ff"
+                HeightRequest="200"
+                HasShadow="True"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center">
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image
+                        HeightRequest="35"
+                        Source="complain.png"
+                        WidthRequest="35" />
+                    <Label
+                        Margin="0,10,0,20"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="Submited Complaints"
+                        TextColor="white"
+                        FontFamily="Harmony"
+                        VerticalOptions="Center" />
+                </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="View_My_Complaint" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

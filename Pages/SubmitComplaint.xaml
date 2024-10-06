@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Complaint_Portal.Pages.SubmitComplaint"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialSymbols;assembly=UraniumUI.Icons.MaterialSymbols"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
+    NavigationPage.HasNavigationBar="False">
+
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Label
+                Margin="0,20,0,15"
+                FontAttributes="Bold"
+                FontSize="25"
+                HorizontalOptions="CenterAndExpand"
+                Text="Submit new Complaint"
+                FontFamily="Harmony"
+                TextColor="red" />
+
+
+            <VerticalStackLayout>
+                <Label
+                        Margin="8"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        FontFamily="Harmony"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Current Date &amp; Time" />
+
+                <HorizontalStackLayout Margin="0,3,0,25" HorizontalOptions="CenterAndExpand">
+
+                    <Label
+                            x:Name="CurrentDate"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            FontFamily="Harmony"
+                            VerticalOptions="CenterAndExpand" />
+                    <Label
+                            x:Name="CurrentTime"
+                            Margin="20,0,0,0"
+                            FontSize="20"
+                            FontFamily="Harmony"
+                            HorizontalOptions="Center"
+                            VerticalOptions="CenterAndExpand" />
+
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+
+            <material:TextField
+                    x:Name="NameEntry"
+                    Title="Name"
+                    FontFamily="Harmony"
+                    Margin="8"
+                    FontSize="18"
+                    Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
+
+            <material:TextField
+                    x:Name="PhoneEntry"
+                    Title="Phone Number"
+                    Keyboard="Numeric"
+                    FontFamily="Harmony"
+                    Margin="8"
+                    FontSize="18"
+                    Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Call}}"/>
+
+            <material:PickerField 
+                    Title="Select your Department" 
+                    Margin="8"
+                    FontSize="18"
+                    FontFamily="Harmony"
+                    AllowClear="False"
+                    x:Name="DepartmentPicker"
+                    Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Arrow_drop_down_circle}}"/>
+
+            <material:PickerField 
+                    Title="Select your Block" 
+                    Margin="8"
+                    FontSize="18"
+                    FontFamily="Harmony"
+                    AllowClear="False"
+                    x:Name="BlockPicker"
+                    Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Arrow_drop_down_circle}}"/>
+
+            <material:PickerField 
+                    Title="Work Related to" 
+                    Margin="8"
+                    FontSize="18"
+                    FontFamily="Harmony"
+                    x:Name="WorkRelated"
+                    AllowClear="False"
+                    Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Arrow_drop_down_circle}}">
+
+            </material:PickerField>
+
+            <material:EditorField
+                    x:Name="ComplaintEditor"
+                    Title="Complaint Details"
+                    FontFamily="Harmony"
+                    Margin="8"
+                    FontSize="18"
+                    Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Edit_note}}"/>
+
+            <Button 
+                    StyleClass="FilledButton" 
+                    Text="Submit Complaint" 
+                    Clicked="OnSubmitButtonClicked"
+                    BackgroundColor="Red"
+                    TextColor="{AppThemeBinding Dark=#ffffff, Light=#ffffff}"
+                    FontFamily="Harmony"
+                    Margin="5,10,5,10"
+                    FontSize="20"
+                    CornerRadius="10"
+                    HeightRequest="50"/>
+
+            <VerticalStackLayout>
+
+                <AbsoluteLayout>
+
+                    <!-- Main Content -->
+                    <VerticalStackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                        <Button Margin="20,50,20,0" Text="Show me Popup" Clicked="ShowPopup"/>
+                    </VerticalStackLayout>
+
+                    <!-- Semi-transparent overlay to simulate blur -->
+                    <BoxView x:Name="Overlay" Color="Gray" Opacity="0.5" 
+              AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+              IsVisible="False" />
+
+                    <!-- Popup Frame -->
+                    <Frame x:Name="MyFrame" IsVisible="False" VerticalOptions="Center" HorizontalOptions="Center"
+            WidthRequest="300" HeightRequest="200" BorderColor="White" BackgroundColor="White" Padding="20" CornerRadius="10"
+            AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, 300, 200">
+                        <Frame.Shadow>
+                            <Shadow Brush="Gray" Opacity="0.6" Offset="10,10" Radius="20" />
+                        </Frame.Shadow>
+                        <StackLayout>
+                            <Label Text="This is a custom popup!" FontAttributes="Bold" HorizontalOptions="Center" />
+
+                            <HorizontalStackLayout HorizontalOptions="End">
+                                <Button Text="Open" HorizontalOptions="End" VerticalOptions="End" Margin="0,85,10,5" Clicked="OpenNewPage_Clicked" />
+                                <Button Text="Close" HorizontalOptions="End" VerticalOptions="End" Margin="10,85,0,5"  Clicked="ClosePopup_Clicked" />
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </Frame>
+
+                </AbsoluteLayout>
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Complaint_Portal.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:m="clr-namespace:UraniumUI.Icons.MaterialSymbols;assembly=UraniumUI.Icons.MaterialSymbols"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView VerticalScrollBarVisibility="Never" HorizontalOptions="Center">
+        <VerticalStackLayout Padding="30" Spacing="25">
+            <Image
+               Margin="0,25,0,5"
+               Aspect="AspectFit"
+               HeightRequest="175"
+               Source="logo.png" />
+
+            <Label
+               Margin="0,8,0,0"
+               FontAttributes="Bold"
+               FontSize="Title"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Text="Shahida Islam&#10;Medical Complex"
+               FontFamily="Harmony"
+               TextColor="#1cb48d"
+               VerticalOptions="Center"
+               VerticalTextAlignment="Center" />
+
+            <Label
+              Margin="0,-18,0,5"
+              FontAttributes="Bold"
+              FontSize="Title"
+              HorizontalOptions="Center"
+              HorizontalTextAlignment="Center"
+              Text="Complaint Portal"
+              FontFamily="Harmony"
+              TextColor="red"
+              VerticalOptions="Center"
+              VerticalTextAlignment="Center" />
+
+            <Label
+              Text="Login to Continue..."
+              FontSize="18"
+              FontFamily="Harmony"
+              FontAttributes="Bold"/>
+
+            <material:TextField
+               x:Name="EmailEntry"
+               Title="Email"
+               FontSize="18"
+               Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Attach_email}}"/>
+
+            <material:TextField
+                x:Name="PasswordEntry"
+                Title="Password"
+                FontSize="18"
+                IsPassword="True"
+                Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Password}}">
+                <material:TextField.Attachments>
+                    <material:TextFieldPasswordShowHideAttachment />
+                </material:TextField.Attachments>
+            </material:TextField>
+
+            <Button 
+                StyleClass="FilledButton" 
+                Text="Login" FontSize="18" 
+                TextColor="{AppThemeBinding Dark=#ffffff, Light=#ffffff}"
+                Clicked="OnSignInClicked"
+                BackgroundColor="Red"
+                FontFamily="Harmony"
+                CornerRadius="10"
+                Margin="0,10,0,10"
+                HeightRequest="50"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

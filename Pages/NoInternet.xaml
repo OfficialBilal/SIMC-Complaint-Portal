@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Complaint_Portal.Pages.NoInternet"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
+    
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+
+        <Image Source="nointernet.png" Margin="15,-20,15,15" HeightRequest="125" WidthRequest="125"/>
+
+        <Label Text="No Internet Connection" FontAttributes="Bold" FontFamily="Harmony" FontSize="Medium" HorizontalOptions="Center"/>
+        <Label Text="Please Connect to the Internet" Margin="0,10,0,0" FontFamily="Harmony" FontSize="Medium" HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>

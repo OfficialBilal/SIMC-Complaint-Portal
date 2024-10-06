@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Complaint_Portal.MVVM.ViewModel"
+             x:Class="Complaint_Portal.SolverDashboard"
+             xmlns:m="clr-namespace:Complaint_Portal.Model"
+             x:DataType="vm:MainViewModel"
+             BackgroundColor="{AppThemeBinding Dark=#000000, Light=#e5e5e5}"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid ColumnSpacing="5" RowSpacing="5">
+
+        <ActivityIndicator
+              x:Name="activityIndicator"
+              Color="{AppThemeBinding Dark=#ffffff, Light=#000000}"
+              IsRunning="True" 
+              IsVisible="True"
+              HorizontalOptions="Center"
+              VerticalOptions="Center">
+        </ActivityIndicator>
+
+        <CollectionView ItemsSource="{Binding Complainlist}" RemainingItemsThreshold="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:SIMC">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems SwipeBehaviorOnInvoked="Close">
+                                <SwipeItem Text="Solved" BackgroundColor="Green" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <StackLayout>
+                            <Frame Padding="10" Margin="10" BorderColor="{AppThemeBinding Dark=#1c1c1c, Light=#FFFFFF}" BackgroundColor="{AppThemeBinding Dark=#1c1c1c, Light=#FFFFFF}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="0" Margin="10,10,10,10">
+                                        <Label Text="Complain Date &amp; Time:" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
+                                        <HorizontalStackLayout>
+                                            <Label Text="{Binding Date}" FontSize="18" FontFamily="Harmony" ></Label>
+                                            <Label Text="{Binding Time}" Margin="15,0,0,0" FontSize="18" FontFamily="Harmony"></Label>
+                                        </HorizontalStackLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="2" Grid.Column="1" Padding="0" Margin="10,0,10,10">
+                                        <Label Text="Complain From:" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
+                                        <Label Text="{Binding Department}" FontSize="18" FontFamily="Harmony"></Label>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="6" Grid.Column="1" Padding="0" Margin="10,0,10,10">
+                                        <Label Text="Complain Type:" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
+                                        <Label Text="Normal" FontSize="18" FontFamily="Harmony"></Label>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="7" Grid.Column="1" Padding="0" Margin="10,0,10,10">
+                                        <Label Text="Complain:" FontSize="18" TextColor="Red" FontAttributes="Bold" FontFamily="Harmony"></Label>
+                                        <Label Text="{Binding ComplaintDetails}" TextColor="Red" FontSize="18" FontFamily="Harmony"></Label>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="8" Grid.Column="1" Padding="0" Margin="10,0,10,10">
+                                        <Label Text="Status:" TextColor="Green" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
+                                        <Label Text="Active" FontSize="18" FontFamily="Harmony"></Label>
+                                    </StackLayout>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=GotoDetailCommand}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+
+    
