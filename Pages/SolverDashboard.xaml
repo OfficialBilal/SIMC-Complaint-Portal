@@ -11,12 +11,12 @@
     <Grid ColumnSpacing="5" RowSpacing="5">
 
         <ActivityIndicator
-              x:Name="activityIndicator"
-              Color="{AppThemeBinding Dark=#ffffff, Light=#000000}"
-              IsRunning="True" 
-              IsVisible="True"
-              HorizontalOptions="Center"
-              VerticalOptions="Center">
+        x:Name="activityIndicator"
+        Color="{AppThemeBinding Dark=#ffffff, Light=#000000}"
+        IsRunning="False" 
+        IsVisible="False"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
         </ActivityIndicator>
 
         <CollectionView ItemsSource="{Binding Complainlist}" RemainingItemsThreshold="2">
@@ -25,7 +25,7 @@
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems SwipeBehaviorOnInvoked="Close">
-                                <SwipeItem Text="Solved" BackgroundColor="Green" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding .}" />
+                                <SwipeItem Text="Solved" BackgroundColor="Green" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Path=SolveComplainCommand}" CommandParameter="{Binding .}" />
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <StackLayout>
@@ -60,15 +60,15 @@
                                     </StackLayout>
                                     <StackLayout Grid.Row="6" Grid.Column="1" Padding="0" Margin="10,0,10,10">
                                         <Label Text="Complain Type:" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
-                                        <Label Text="Normal" FontSize="18" FontFamily="Harmony"></Label>
+                                        <Label Text="{Binding ComplainType}" FontSize="18" FontFamily="Harmony"></Label>
                                     </StackLayout>
                                     <StackLayout Grid.Row="7" Grid.Column="1" Padding="0" Margin="10,0,10,10">
                                         <Label Text="Complain:" FontSize="18" TextColor="Red" FontAttributes="Bold" FontFamily="Harmony"></Label>
                                         <Label Text="{Binding ComplaintDetails}" TextColor="Red" FontSize="18" FontFamily="Harmony"></Label>
                                     </StackLayout>
                                     <StackLayout Grid.Row="8" Grid.Column="1" Padding="0" Margin="10,0,10,10">
-                                        <Label Text="Status:" TextColor="Green" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
-                                        <Label Text="Active" FontSize="18" FontFamily="Harmony"></Label>
+                                        <Label Text="Complain Status:" TextColor="Green" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
+                                        <Label Text="{Binding Status}" FontSize="18" FontFamily="Harmony"></Label>
                                     </StackLayout>
                                 </Grid>
                                 <Frame.GestureRecognizers>

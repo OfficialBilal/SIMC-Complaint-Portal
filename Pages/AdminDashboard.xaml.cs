@@ -34,7 +34,7 @@ public partial class AdminDashboard : ContentPage
 
     private void Active_Complaints(object sender, TappedEventArgs e)
     {
-        Navigation.PushAsync(new ActiveComplaints());
+        Navigation.PushAsync(new ActiveComplaints(firebaseClient, mainViewModel));
     }
 
     private void Solved_Complaints(object sender, TappedEventArgs e)

@@ -9,6 +9,7 @@ namespace Complaint_Portal.Model
 {
     public class SIMC
     {
+        public string Id { get; set; }
         public Guid ID { get; set; } = Guid.NewGuid();
         public string Date { get; set; }
         public string Time { get; set; }
@@ -19,6 +20,9 @@ namespace Complaint_Portal.Model
         public string PhoneNumber { get; set; }
         public string WorkRelated { get; set; }
         public string ComplaintDetails { get; set; }
+        public string Status { get; set; } = "Active";
+        public string ComplainType { get; set; } = "Normal";
+        
     }
 
 }

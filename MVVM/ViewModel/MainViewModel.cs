@@ -48,8 +48,67 @@ namespace Complaint_Portal.MVVM.ViewModel
                 {
                     item.Object.Date = item.Object.Date;
                     item.Object.Name = item.Object.Name;
+                    item.Object.Id = item.Key;
                     complainlist.Add(item.Object);
                 }
+            }
+        }
+
+        [RelayCommand]
+        public async Task SolveComplainAsync(SIMC complain)
+        {
+            if (complain == null || string.IsNullOrEmpty(complain.Id))
+                return;
+
+            // Fetch the current complaint from Firebase to avoid overwriting other fields
+            var existingComplain = await this.firebaseClient
+                .Child("SIMC")
+                .Child(complain.Id)
+                .OnceSingleAsync<SIMC>();
+
+            if (existingComplain != null)
+            {
+                // Update only the status field, keeping the rest unchanged
+                existingComplain.Status = "Solved";
+
+                // Save the updated complaint back to Firebase
+                await this.firebaseClient
+                    .Child("SIMC")
+                    .Child(complain.Id)
+                    .PutAsync(existingComplain);  // Put the entire updated object back to Firebase
+
+                // Optionally, reload the data if needed
+                await LoadDataAsync();
+            }
+
+        }
+
+        [RelayCommand]
+        public async Task ComplainTypeAsync(SIMC complain)
+        {
+            if (complain == null || string.IsNullOrEmpty(complain.Id))
+                return;
+
+            // Fetch the current complaint from Firebase to avoid overwriting other fields
+            var existingComplain = await this.firebaseClient
+                .Child("SIMC")
+                .Child(complain.Id)
+                .OnceSingleAsync<SIMC>();
+
+            if (existingComplain != null)
+            {
+                // Update only the status field, keeping the rest unchanged
+                existingComplain.ComplainType = "Urgent";
+
+                // Save the updated complaint back to Firebase
+                await this.firebaseClient
+                    .Child("SIMC")
+                    .Child(complain.Id)
+                    .PutAsync(existingComplain);  // Put the entire updated object back to Firebase
+
+                // Optionally, reload the data if needed
+                await LoadDataAsync();
+
             }
         }
 

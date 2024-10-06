@@ -71,15 +71,15 @@
                                 </StackLayout>
                                 <StackLayout Grid.Row="7" Grid.Column="1" Padding="0" Margin="10,0,10,10">
                                     <Label Text="Complain Type:" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
-                                    <Label Text="Normal" FontSize="18" FontFamily="Harmony"></Label>
+                                    <Label Text="{Binding ComplainType}" FontSize="18" FontFamily="Harmony"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Row="8" Grid.Column="1" Padding="0" Margin="10,0,10,10">
                                     <Label Text="Complain:" FontSize="18" TextColor="Red" FontAttributes="Bold" FontFamily="Harmony"></Label>
                                     <Label Text="{Binding ComplaintDetails}" TextColor="Red" FontSize="18" FontFamily="Harmony"></Label>
                                 </StackLayout>
                                 <StackLayout Grid.Row="9" Grid.Column="1" Padding="0" Margin="10,0,10,10">
-                                    <Label Text="Status:" TextColor="Green" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
-                                    <Label Text="Active" FontSize="18" FontFamily="Harmony"></Label>
+                                    <Label Text="Complain Status:" TextColor="Green" FontSize="18" FontAttributes="Bold" FontFamily="Harmony"></Label>
+                                    <Label Text="{Binding Status}" FontSize="18" FontFamily="Harmony"></Label>
                                 </StackLayout>
 
                             </Grid>
